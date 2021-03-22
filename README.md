@@ -8,13 +8,13 @@ testapp_port = 9292
 доп. задание - создание инстанса с приложением
 скрипты для инстала и деплоя выложены на гист
 https://gist.github.com/avoronovat/0e695a7a3b7523455cdd785c682bc51a
-и запускается командой
+и запускается командой ( !переделано скрипты из гист не используются, все через метадата )
 
 yc compute instance create \
     --name reddit-app-auto \
     --hostname reddit-app-auto \
     --memory=2 \
-    --create-boot-disk image-folder-id=standard-images,image-family=ubuntu-1804,size=20GB \
+    --create-boot-disk image-folder-id=standard-images,image-family=ubuntu-1604,size=10GB \
     --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4 \
     --metadata serial-port-enable=1 \
     --metadata-from-file user-data=./metadata_app.yaml
