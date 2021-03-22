@@ -1,0 +1,35 @@
+#cloud-config
+disable_root: true
+timezone: Europe/Moscow
+repo_update: true
+repo_upgrade: true
+apt:
+  preserve_sources_list: true
+
+users:
+    - default
+    - name: ubuntu
+      sudo: ALL=(ALL) NOPASSWD:ALL
+      shell: /bin/bash
+      ssh-authorized-keys:
+        - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJ6x+RcFWEHRowLl9teeMmjU6SzqdxPl2iEBt9a2PKf/teZjNoH18Lrc1FYNEBbiR8drWkVmVhBq7DzX5R3ShHPtdYYz0AnOgpv5U/K4g0LfdPkAruv+RfTmFE4MlcwkXp0R9BXYLmz9lnTd5ioXNSm1DX+X5WJLEm/eQ1i3FeRvzcLEFD/l/q8NeTtraTQgmSCZThQ8dF63LCJPUCbBb+owM3ARC8gW614dXeF+o3fU4RbCABzS1MlAnHhY/TMakIXBOjN9lzzMydVy7xtzWlOPGklqvV+k1DLE34G2V/19hHfcvKmeAuXNMRI9CUR7eLxW1Z7iaAn664vkMd4hYBubX636RRwOWqpGrQb8hefHwNst6vRkG5/lj+T4dzMp6O88trO8gI4ANM/PNBOam58WswltRASW+GuBFUKET+sJI1aOyKGTNRomcqsxDArFVF6kWjwjPxh8uiX/M3dm21sq8+gSQJEQl3rwGqdaAEKwwxZNiY/YH/u06InpQOhls= appuser"
+
+#packages:
+#  - nginx
+#  - git
+#  - ruby-full
+#  - ruby-bundler
+#  - build-essential
+
+runcmd:
+#  - [ systemctl, nginx-reload ]
+#  - [ systemctl, enable, nginx.service ]
+#  - [ systemctl, start, --no-block, nginx.service ]
+  - [ wget, "https://gist.github.com/avoronovat/0e695a7a3b7523455cdd785c682bc51a/raw/67967c466b3b34b1941c3739bf9446a322e744b9/install_ruby.sh", -O, "/home/ubuntu/install_ruby.sh" ]
+  - [ wget, "https://gist.githubusercontent.com/avoronovat/0e695a7a3b7523455cdd785c682bc51a/raw/67967c466b3b34b1941c3739bf9446a322e744b9/install_mongodb.sh", -O, "/home/ubuntu/install_mongodb.sh" ]
+  - [ wget, "https://gist.github.com/avoronovat/0e695a7a3b7523455cdd785c682bc51a/raw/67967c466b3b34b1941c3739bf9446a322e744b9/deploy.sh", -O, "/home/ubuntu/deploy.sh" ]
+  - [ sudo, bash, "/home/ubuntu/install_ruby.sh" ]
+  - [ sudo, bash, "/home/ubuntu/install_mongodb.sh" ]
+  - [ sudo, bash, "/home/ubuntu/deploy.sh" ]
+
+final_message: "The system is finally up, after $UPTIME seconds"
