@@ -1,0 +1,14 @@
+{
+    "builders": [
+        {
+            "type": "yandex",
+            "service_account_key_file": "/root/key.json",
+            "folder_id": "b1g593l2rokl9tfe4k8i",
+            "source_image_family": "ubuntu-1604-lts",
+            "image_name": "reddit-base-{{timestamp}}",
+            "image_family": "reddit-base",
+            "ssh_username": "ubuntu",
+            "platform_id": "standard-v1"
+        }
+    ]
+}
