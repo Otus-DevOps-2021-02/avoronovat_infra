@@ -8,14 +8,17 @@
             "image_name": "reddit-base-{{timestamp}}",
             "image_family": "reddit-base",
             "ssh_username": "ubuntu",
-            "platform_id": "standard-v1"
+            "platform_id": "standard-v1",
+	    "use_ipv4_nat": "true",
+	    "subnet_id": "e9blgvgvmjan420mdovt"
         }
     ],
     "provisioners": [
         {
             "type": "shell",
             "script": "scripts/install_ruby.sh",
-            "execute_command": "sudo {{.Path}}"
+            "execute_command": "sudo {{.Path}}",
+	    "pause_after": "10s"
         },
         {
             "type": "shell",
