@@ -1,0 +1,6 @@
+    {
+            "v_keyfile": "/home/user/key.file",
+            "v_folderid": "folderid",
+            "v_srcimage": "ubuntu-1604-lts",
+	    "v_subnet": "subnet id"
+    }
