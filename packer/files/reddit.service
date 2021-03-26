@@ -1,0 +1,19 @@
+[Unit]
+Description=RedditApp
+After=syslog.target
+After=network.target
+Requires=mongod.service
+
+[Service]
+Type=simple
+PIDFile=/home/ubuntu/reddit/puma.pid
+WorkingDirectory=/home/ubuntu/reddit/
+User=root
+Group=root
+ExecStart=/bin/bash -l -c 'bundle exec puma'
+ExecStop=/bin/bash -l -c 'bundle exec pumactl stop'
+TimeoutSec=300
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
