@@ -7,7 +7,7 @@ provider "yandex" {
 
 resource "yandex_compute_instance" "app" {
   count = var.instances_count
-  name = "reddit-app${count.index}"
+  name  = "reddit-app${count.index}"
 
   resources {
     cores         = 2
@@ -33,8 +33,8 @@ resource "yandex_compute_instance" "app" {
 
 
   connection {
-    type  = "ssh"
-    host  = yandex_compute_instance.app[count.index].network_interface.0.nat_ip_address
+    type = "ssh"
+    host = yandex_compute_instance.app[count.index].network_interface.0.nat_ip_address
     # yandex_compute_instance.app[0].network_interface.0.nat_ip_address
     user  = "ubuntu"
     agent = false

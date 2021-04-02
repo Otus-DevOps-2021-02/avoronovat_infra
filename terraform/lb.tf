@@ -1,6 +1,6 @@
 resource "yandex_lb_target_group" "target" {
-  name      = "my-target-group"
-#  region_id = var.zone
+  name = "my-target-group"
+  #  region_id = var.zone
   count = var.instances_count
   target {
     subnet_id = var.subnet_id
@@ -10,18 +10,18 @@ resource "yandex_lb_target_group" "target" {
 }
 
 resource "yandex_lb_network_load_balancer" "balancer" {
-  name = "my-network-load-balancer"
+  name      = "my-network-load-balancer"
   folder_id = var.folder_id
-  count = var.instances_count
- listener {
+  count     = var.instances_count
+  listener {
     name = "my-listener"
     port = 9292
     external_address_spec {
       ip_version = "ipv4"
     }
- }
+  }
 
- attached_target_group {
+  attached_target_group {
     target_group_id = "${yandex_lb_target_group.target[count.index].id}"
 
     healthcheck {

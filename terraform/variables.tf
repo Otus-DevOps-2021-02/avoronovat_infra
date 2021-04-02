@@ -24,5 +24,5 @@ variable service_account_key_file {
 }
 variable instances_count {
   description = "How many instances"
-  default = 1
+  default     = 1
 }
