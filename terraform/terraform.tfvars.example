@@ -1,0 +1,7 @@
+cloud_id                 = "same_yc_id"
+folder_id                = "same_yc_folder_id"
+zone                     = "ru-central1-a"
+image_id                 = "id_base_iamge_for_deploy_app"
+public_key_path          = "/path/to/public/sshkey/user.pub"
+subnet_id                = "same_subnet_id"
+service_account_key_file = "/path/to/key.json"
