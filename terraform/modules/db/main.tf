@@ -26,13 +26,13 @@ resource "yandex_compute_instance" "db" {
   }
 
   connection {
-      type = "ssh"
-      host = yandex_compute_instance.db.network_interface.0.nat_ip_address
-      user  = "ubuntu"
-      agent = false
-      # путь до приватного ключа
-      private_key = file("/root/.ssh/appuser")
-    }
+    type  = "ssh"
+    host  = yandex_compute_instance.db.network_interface.0.nat_ip_address
+    user  = "ubuntu"
+    agent = false
+    # путь до приватного ключа
+    private_key = file("/root/.ssh/appuser")
+  }
 
   provisioner "remote-exec" {
     inline = [
