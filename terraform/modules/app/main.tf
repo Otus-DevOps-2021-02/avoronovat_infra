@@ -50,5 +50,5 @@ resource "yandex_compute_instance" "app" {
       "sudo systemctl restart puma",
     ]
   }
-  
+
 }
