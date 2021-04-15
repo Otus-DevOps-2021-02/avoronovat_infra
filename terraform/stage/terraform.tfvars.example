@@ -7,4 +7,4 @@ subnet_id                = "id subnet"
 service_account_key_file = "/path/to/key.json"
 app_disk_image           = "app image id"
 db_disk_image            = "db image id"
-private_key_path = var.private_key_path
+private_key_path         = "path/to/privkey"
