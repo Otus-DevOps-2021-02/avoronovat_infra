@@ -31,7 +31,7 @@ resource "yandex_compute_instance" "db" {
     user  = "ubuntu"
     agent = false
     # путь до приватного ключа
-    private_key = file("/root/.ssh/appuser")
+    private_key = "${file(var.private_key_path)}"
   }
 
   provisioner "remote-exec" {
