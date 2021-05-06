@@ -1,0 +1,24 @@
+---
+- name: Install MongoDB
+  hosts: db
+  become: true
+  tasks:
+    - name: Add Repo
+      apt_repository:
+        repo: deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.2 multiverse
+        state: present
+        filename: mongodb-org-4.2.list
+    - name: Install MongoDB
+      apt:
+        name: mongodb-org
+        state: present
+        update-cache: yes
+      notify: restart mongod
+  tags: db-install-tag
+
+  handlers:
+    - name: restart mongod
+      service:
+        name: mongod
+        state: started
+        enable: yes
