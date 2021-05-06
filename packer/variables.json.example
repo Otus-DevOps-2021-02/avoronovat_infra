@@ -1,5 +1,5 @@
     {
-            "v_keyfile": "./key.json",
+            "v_keyfile": "./packer/key.json",
             "v_folderid": "bla-bla-bla-id",
             "v_srcimage": "ubuntu-1604-lts",
 	    "v_subnet": "bla-bla-bla-subnet",
