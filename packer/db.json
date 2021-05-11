@@ -17,7 +17,7 @@
         {
             "pause_before": "15s",
             "type": "ansible",
-            "playbook_file": "ansible/packer_db.yml",
+            "playbook_file": "ansible/playbooks/packer_db.yml",
             "user": "ubuntu"
         }
     ]
