@@ -4,6 +4,9 @@ output "external_ip_address_app" {
 output "external_ip_address_db" {
   value = module.db.external_ip_address_db
 }
+output "local_ip_address_db" {
+  value = module.db.local_ip_address_db
+}
 
 ### The Ansible inventory file to ansible dir
 resource "local_file" "AnsibleInventoryYML" {
@@ -13,7 +16,7 @@ resource "local_file" "AnsibleInventoryYML" {
       db-ip  = module.db.external_ip_address_db
     }
   )
-  filename = "../../ansible/inventory.yml"
+  filename = "../../ansible/environments/stage/inventory.yml"
 }
 
 resource "local_file" "AnsibleInventoryJSON" {
@@ -23,6 +26,14 @@ resource "local_file" "AnsibleInventoryJSON" {
       db-ip  = module.db.external_ip_address_db
     }
   )
-  filename = "../../ansible/inventory.json"
+  filename = "../../ansible/environments/stage/inventory.json"
 }
 
+resource "local_file" "AnsibleGroupVarsAPP" {
+  content = templatefile("group_vars.app.tmpl",
+    {
+      db-local-ip = module.db.local_ip_address_db
+    }
+  )
+  filename = "../../ansible/environments/stage/group_vars/app"
+}
